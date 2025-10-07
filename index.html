@@ -379,9 +379,9 @@
             <header>
                 <img src="header_beweglich.jpg" alt="Header Bild Praxis Beweglich" style="width: 100%; border-radius: 12px; margin-bottom: 20px; max-height: 400px; object-fit: cover;">
                 <h1>Analyse für die Personalsuche</h1>
-                <p>Hallo Andrea, vielen Dank, dass du dir die Zeit nimmst. Diese Checkliste hilft uns, deine Praxis perfekt zu verstehen und die passenden Talente für dich zu finden.</p>
+                <p>Hallo Andrea, vielen Dank, dass du dir die Zeit nimmst. Diese Checkliste hilft uns, deine Praxis perfekt zu verstehen und die passenden Talente für dich zu finden. Das vollständige Ausfüllen dauert ca. 10 Minuten.</p>
                 <div class="privacy-notice">
-                    <i class="fas fa-save"></i> <strong>Kein Stress:</strong> Dein Fortschritt wird automatisch in deinem Browser gespeichert. Du kannst die Seite jederzeit schließen und später an derselben Stelle weitermachen (am selben Gerät). Alle deine Angaben sind selbstverständlich streng vertraulich.
+                    <i class="fas fa-shield-alt"></i> <strong>Deine Zeit & deine Daten sind uns wichtig:</strong> Dein Fortschritt wird automatisch und sicher in deinem Browser gespeichert. Du kannst die Bearbeitung jederzeit unterbrechen und später am selben Gerät fortsetzen. Alle deine Angaben werden selbstverständlich streng vertraulich behandelt und ausschließlich für die Dauer unserer Zusammenarbeit verwendet.
                 </div>
                 <a href="https://wa.me/4915752065959" target="_blank" class="whatsapp-button" style="margin-top: 15px; max-width: 400px; margin-left: auto; margin-right: auto;"><i class="fab fa-whatsapp"></i>Direkte Frage per WhatsApp stellen</a>
             </header>
@@ -478,7 +478,6 @@
                              <label><input type="radio" name="D. Planung - Schichtorganisation" value="Individuell nach Wunsch"> individuell nach Wunsch</label>
                         </div>
                     </div>
-                    <div class="form-group"><label for="anzahl_neue_ma">Wie viele neue Mitarbeitende kannst du aktuell realistisch einstellen?</label><input type="number" id="anzahl_neue_ma" name="D. Planung - Anzahl neue MA" data-progress></div>
                     <div class="form-group"><label for="arbeitszeitmodelle">Welche Arbeitszeitmodelle möchtest du anbieten?</label><input type="text" id="arbeitszeitmodelle" name="D. Planung - Arbeitszeitmodelle" placeholder="z. B. 30h, 35h, 40h, flexible Teilzeit" data-progress></div>
                 </section>
 
@@ -592,10 +591,10 @@
             
             const importantFieldIds = [
                 'max_patienten_tag', 'art_behandlungen', 'grundgehalt_vz', 'urlaubstage',
-                'anzahl_neue_ma', 'team_drei_worte', 'unterschied_praxis', 'typ_therapeut', 'ziel_12_wochen'
+                'team_drei_worte', 'unterschied_praxis', 'typ_therapeut', 'ziel_12_wochen', 'aufnahme_kapazitaet'
             ];
             
-            const storageKey = 'recruitingFormProgress_beweglich_v3'; // Changed key to avoid conflicts with old version
+            const storageKey = 'recruitingFormProgress_beweglich_v4'; // Changed key to avoid conflicts with old version
 
             function saveProgress() {
                 const formData = new FormData(form);
