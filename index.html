@@ -159,6 +159,12 @@
             cursor: pointer;
         }
         
+        .choice-group-options {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
         input[type="text"],
         input[type="number"],
         input[type="email"],
@@ -196,17 +202,13 @@
             resize: vertical;
         }
         
-        .radio-group label {
-            display: inline-block;
+        .radio-group label, .checkbox-group label {
+            display: flex;
+            align-items: center;
             margin-right: 20px;
             font-weight: normal;
         }
         
-        .radio-group div {
-             display: flex;
-             align-items: center;
-        }
-
         .info-icon {
             display: inline-block;
             width: 20px;
@@ -391,7 +393,7 @@
                     <h2><span class="icon"><i class="fas fa-calendar-alt"></i></span>A. Organisation der Behandlungen</h2>
                     <div class="form-group radio-group" data-progress>
                         <label>Wie lange dauert eine Behandlung im Regelfall?</label>
-                        <div>
+                        <div class="choice-group-options">
                             <label><input type="radio" name="A. Organisation - Behandlungsdauer" value="20"> 20 Minuten</label>
                             <label><input type="radio" name="A. Organisation - Behandlungsdauer" value="30"> 30 Minuten</label>
                         </div>
@@ -410,8 +412,33 @@
                     <div class="form-group"><label for="doku_software">Digitale Dokumentation vorhanden? (Programm/Software):</label><input type="text" id="doku_software" name="B. Ablaeufe - Doku Software" placeholder="z.B. Theorg, Starke Praxis, ... oder 'Nein'" data-progress></div>
                     <div class="form-group"><label class="checkbox-label"><input type="checkbox" name="B. Ablaeufe - Standardisierte Ablauefe"> Standardisierte Abläufe für Doku und Abrechnung vorhanden<span class="info-icon">?<span class="tooltip">Gemeint sind z.B. Standard Operating Procedures (SOPs) oder Checklisten, die sicherstellen, dass alle die gleichen, effizienten Schritte befolgen.</span></span></label></div>
                     <div class="form-group"><label for="wer_macht_bewerbungen">Wer kümmert sich aktuell um Bewerbungen und Verwaltung?</label><input type="text" id="wer_macht_bewerbungen" name="B. Ablaeufe - Zustaendig fuer Bewerbungen" placeholder="Stichworte sind ausreichend" data-progress></div>
-                    <div class="form-group"><label for="reaktionszeit_bewerbungen">Wie schnell kannst du in der Regel auf Bewerbungen reagieren?</label><input type="text" id="reaktionszeit_bewerbungen" name="B. Ablaeufe - Reaktionszeit auf Bewerbungen" placeholder="z. B. innerhalb von 24 h, 2 Tagen etc." data-progress></div>
-                    <div class="form-group"><label for="prozess_bisher">Wie läuft der Bewerbungsprozess bisher ab?</label><textarea id="prozess_bisher" name="B. Ablaeufe - Bisheriger Bewerbungsprozess" placeholder="Stichworte oder eine kurze Beschreibung genügen" data-progress></textarea></div>
+                    
+                    <div class="form-group radio-group" data-progress>
+                        <label>Wie schnell reagierst du aktuell auf eingehende Bewerbungen?</label>
+                        <div class="choice-group-options">
+                            <label><input type="radio" name="B. Ablaeufe - Reaktionszeit" value="24h"> innerhalb von 24h</label>
+                            <label><input type="radio" name="B. Ablaeufe - Reaktionszeit" value="2-3 Tage"> innerhalb von 2-3 Tagen</label>
+                            <label><input type="radio" name="B. Ablaeufe - Reaktionszeit" value="spaeter"> später</label>
+                        </div>
+                    </div>
+                    <div class="form-group radio-group" data-progress>
+                        <label>Wie erfolgt der Erstkontakt derzeit?</label>
+                        <div class="choice-group-options">
+                            <label><input type="radio" name="B. Ablaeufe - Erstkontakt" value="Telefon"> Telefonisch</label>
+                            <label><input type="radio" name="B. Ablaeufe - Erstkontakt" value="E-Mail"> E-Mail</label>
+                            <label><input type="radio" name="B. Ablaeufe - Erstkontakt" value="WhatsApp"> WhatsApp</label>
+                            <label><input type="radio" name="B. Ablaeufe - Erstkontakt" value="Persoenlich"> Persönlich</label>
+                        </div>
+                    </div>
+                     <div class="form-group radio-group" data-progress>
+                        <label>Wann findet in der Regel das Kennenlerngespräch statt?</label>
+                        <div class="choice-group-options">
+                            <label><input type="radio" name="B. Ablaeufe - Zeitpunkt Kennenlernen" value="3 Tage"> innerhalb von 3 Tagen</label>
+                            <label><input type="radio" name="B. Ablaeufe - Zeitpunkt Kennenlernen" value="1 Woche"> innerhalb einer Woche</label>
+                            <label><input type="radio" name="B. Ablaeufe - Zeitpunkt Kennenlernen" value="spaeter"> später</label>
+                        </div>
+                    </div>
+
                     <div class="form-group"><label for="prozess_verbessern">Was möchtest du an diesem Ablauf gerne verbessern?</label><textarea id="prozess_verbessern" name="B. Ablaeufe - Verbesserungswunsch Prozess" placeholder="Stichworte oder eine kurze Beschreibung genügen" data-progress></textarea></div>
                 </section>
                 
@@ -440,11 +467,19 @@
                     <h2><span class="icon"><i class="fas fa-clock"></i></span>D. Arbeitszeiten & Planung</h2>
                     <div class="form-group"><label class="checkbox-label"><input type="checkbox" name="D. Arbeitszeiten - Feste Schichten"> Feste, planbare Schichten (z. B. Früh- / Spätdienste)</label></div>
                     <div class="form-group"><label class="checkbox-label"><input type="checkbox" name="D. Arbeitszeiten - Keine geteilten Dienste"> Keine geteilten Dienste</label></div>
-                    <div class="form-group radio-group" data-progress><label>Wochenend- oder Feiertagsdienste:</label><div><label><input type="radio" name="D. Arbeitszeiten - Wochenenddienste" value="ja"> Ja</label><label><input type="radio" name="D. Arbeitszeiten - Wochenenddienste" value="nein"> Nein</label></div></div>
-                    <div class="form-group radio-group" data-progress><label>Möglichkeit zur Dokumentation von zu Hause:</label><div><label><input type="radio" name="D. Arbeitszeiten - Doku von Zuhause" value="ja"> Ja</label><label><input type="radio" name="D. Arbeitszeiten - Doku von Zuhause" value="nein"> Nein</label></div></div>
+                    <div class="form-group radio-group" data-progress><label>Wochenend- oder Feiertagsdienste:</label><div class="choice-group-options"><label><input type="radio" name="D. Arbeitszeiten - Wochenenddienste" value="ja"> Ja</label><label><input type="radio" name="D. Arbeitszeiten - Wochenenddienste" value="nein"> Nein</label></div></div>
+                    <div class="form-group radio-group" data-progress><label>Möglichkeit zur Dokumentation von zu Hause:</label><div class="choice-group-options"><label><input type="radio" name="D. Arbeitszeiten - Doku von Zuhause" value="ja"> Ja</label><label><input type="radio" name="D. Arbeitszeiten - Doku von Zuhause" value="nein"> Nein</label></div></div>
+                    <div class="form-group radio-group" data-progress>
+                        <label>Wie werden die Schichten derzeit organisiert?</label>
+                        <div class="choice-group-options">
+                             <label><input type="radio" name="D. Planung - Schichtorganisation" value="Feste Schichten"> feste Früh-/Spätschichten</label>
+                             <label><input type="radio" name="D. Planung - Schichtorganisation" value="Wochenplan"> Wochenplan</label>
+                             <label><input type="radio" name="D. Planung - Schichtorganisation" value="Taeglich flexibel"> täglich flexibel</label>
+                             <label><input type="radio" name="D. Planung - Schichtorganisation" value="Individuell nach Wunsch"> individuell nach Wunsch</label>
+                        </div>
+                    </div>
                     <div class="form-group"><label for="anzahl_neue_ma">Wie viele neue Mitarbeitende kannst du aktuell realistisch einstellen?</label><input type="number" id="anzahl_neue_ma" name="D. Planung - Anzahl neue MA" data-progress></div>
                     <div class="form-group"><label for="arbeitszeitmodelle">Welche Arbeitszeitmodelle möchtest du anbieten?</label><input type="text" id="arbeitszeitmodelle" name="D. Planung - Arbeitszeitmodelle" placeholder="z. B. 30h, 35h, 40h, flexible Teilzeit" data-progress></div>
-                    <div class="form-group"><label for="schichtplanung">Wie planst du aktuell die Schichten im Team?</label><textarea id="schichtplanung" name="D. Planung - Schichtplanung aktuell" placeholder="Stichworte oder eine kurze Beschreibung genügen" data-progress></textarea></div>
                 </section>
 
                 <!-- E. Team, Einarbeitung & Arbeitskultur -->
@@ -477,15 +512,22 @@
                 <!-- G. Kommunikation & Darstellung -->
                 <section class="form-section" id="section-g">
                     <h2><span class="icon"><i class="fas fa-bullhorn"></i></span>G. Kommunikation & Darstellung</h2>
-                    <div class="form-group radio-group" data-progress><label>Ansprache in Anzeigen:</label><div><label><input type="radio" name="G. Kommunikation - Ansprache" value="du"> „Du“-Stil</label><label><input type="radio" name="G. Kommunikation - Ansprache" value="sie"> „Sie“-Stil</label></div></div>
-                    <div class="form-group radio-group" data-progress><label>WhatsApp Business für Bewerbungen vorhanden:</label><div><label><input type="radio" name="G. Kommunikation - WhatsApp Business" value="ja"> Ja</label><label><input type="radio" name="G. Kommunikation - WhatsApp Business" value="nein"> Nein</label></div></div>
-                    <div class="form-group radio-group" data-progress><label>Bevorzugter Kommunikationskanal für Bewerbungen:</label><div><label><input type="radio" name="G. Kommunikation - Bevorzugter Kanal" value="whatsapp"> WhatsApp</label><label><input type="radio" name="G. Kommunikation - Bevorzugter Kanal" value="email"> E-Mail</label><label><input type="radio" name="G. Kommunikation - Bevorzugter Kanal" value="telefon"> Telefon</label></div></div>
+                    <div class="form-group radio-group" data-progress><label>Ansprache in Anzeigen:</label><div class="choice-group-options"><label><input type="radio" name="G. Kommunikation - Ansprache" value="du"> „Du“-Stil</label><label><input type="radio" name="G. Kommunikation - Ansprache" value="sie"> „Sie“-Stil</label></div></div>
+                    <div class="form-group radio-group" data-progress><label>WhatsApp Business für Bewerbungen vorhanden:</label><div class="choice-group-options"><label><input type="radio" name="G. Kommunikation - WhatsApp Business" value="ja"> Ja</label><label><input type="radio" name="G. Kommunikation - WhatsApp Business" value="nein"> Nein</label></div></div>
+                    <div class="form-group checkbox-group" data-progress>
+                        <label>Bevorzugter Kommunikationskanal für Bewerbungen (Mehrfachauswahl möglich):</label>
+                        <div class="choice-group-options">
+                            <label><input type="checkbox" name="G. Kommunikation - Kanal - WhatsApp" value="ja"> WhatsApp</label>
+                            <label><input type="checkbox" name="G. Kommunikation - Kanal - E-Mail" value="ja"> E-Mail</label>
+                            <label><input type="checkbox" name="G. Kommunikation - Kanal - Telefon" value="ja"> Telefon</label>
+                        </div>
+                    </div>
                     <div class="form-group"><label for="wer_erstgespraech">Wer führt das erste Gespräch mit Bewerber:innen?</label><input type="text" id="wer_erstgespraech" name="G. Kommunikation - Wer fuehrt Erstgespraech" data-progress></div>
                     <div class="form-group"><label for="erreichbarkeit_termine">Wann bist du am besten erreichbar für Kennenlern-Termine?</label><input type="text" id="erreichbarkeit_termine" name="G. Kommunikation - Erreichbarkeit" data-progress></div>
-                    <div class="form-group radio-group" data-progress><label>Erlaubnis, Praxisräume oder Teamfotos in der Werbung zu zeigen:</label><div><label><input type="radio" name="G. Darstellung - Erlaubnis Fotos zeigen" value="ja"> Ja</label><label><input type="radio" name="G. Darstellung - Erlaubnis Fotos zeigen" value="nein"> Nein</label></div></div>
-                    <div class="form-group radio-group" data-progress><label>Bereits vorhandene Fotos/Videos nutzbar:</label><div><label><input type="radio" name="G. Darstellung - Vorhandene Fotos nutzbar" value="ja"> Ja</label><label><input type="radio" name="G. Darstellung - Vorhandene Fotos nutzbar" value="nein"> Nein</label></div></div>
-                    <div class="form-group radio-group" data-progress><label>Dürfen neue Fotos oder kurze Videos in der Praxis aufgenommen werden?</label><div><label><input type="radio" name="G. Darstellung - Neue Aufnahmen OK" value="ja"> Ja</label><label><input type="radio" name="G. Darstellung - Neue Aufnahmen OK" value="nein"> Nein</label></div></div>
-                    <div class="form-group radio-group" data-progress><label>Darf KI (Künstliche Intelligenz) zur Erstellung von Medieninhalten (z.B. Bilder) verwendet werden?</label><div><label><input type="radio" name="G. Darstellung - KI Medien OK" value="ja"> Ja</label><label><input type="radio" name="G. Darstellung - KI Medien OK" value="nein"> Nein</label></div></div>
+                    <div class="form-group radio-group" data-progress><label>Erlaubnis, Praxisräume oder Teamfotos in der Werbung zu zeigen:</label><div class="choice-group-options"><label><input type="radio" name="G. Darstellung - Erlaubnis Fotos zeigen" value="ja"> Ja</label><label><input type="radio" name="G. Darstellung - Erlaubnis Fotos zeigen" value="nein"> Nein</label></div></div>
+                    <div class="form-group radio-group" data-progress><label>Bereits vorhandene Fotos/Videos nutzbar:</label><div class="choice-group-options"><label><input type="radio" name="G. Darstellung - Vorhandene Fotos nutzbar" value="ja"> Ja</label><label><input type="radio" name="G. Darstellung - Vorhandene Fotos nutzbar" value="nein"> Nein</label></div></div>
+                    <div class="form-group radio-group" data-progress><label>Dürfen neue Fotos oder kurze Videos in der Praxis aufgenommen werden?</label><div class="choice-group-options"><label><input type="radio" name="G. Darstellung - Neue Aufnahmen OK" value="ja"> Ja</label><label><input type="radio" name="G. Darstellung - Neue Aufnahmen OK" value="nein"> Nein</label></div></div>
+                    <div class="form-group radio-group" data-progress><label>Darf KI (Künstliche Intelligenz) zur Erstellung von Medieninhalten (z.B. Bilder) verwendet werden?</label><div class="choice-group-options"><label><input type="radio" name="G. Darstellung - KI Medien OK" value="ja"> Ja</label><label><input type="radio" name="G. Darstellung - KI Medien OK" value="nein"> Nein</label></div></div>
                     <div class="form-group"><label for="nicht_zeigen">Gibt es Bereiche oder Personen, die nicht gezeigt werden sollen?</label><input type="text" id="nicht_zeigen" name="G. Darstellung - Tabu-Bereiche" placeholder="Stichworte sind ausreichend" data-progress></div>
                     <div class="form-group"><label for="darstellung_selbst">Wie möchtest du dich selbst auf der Webseite/Anzeige zeigen?</label><input type="text" id="darstellung_selbst" name="G. Darstellung - Eigene Darstellung" placeholder="z. B. im Vordergrund, mit Team, neutral" data-progress></div>
                 </section>
@@ -553,7 +595,7 @@
                 'anzahl_neue_ma', 'team_drei_worte', 'unterschied_praxis', 'typ_therapeut', 'ziel_12_wochen'
             ];
             
-            const storageKey = 'recruitingFormProgress_beweglich_v2'; // Changed key to avoid conflicts with old version
+            const storageKey = 'recruitingFormProgress_beweglich_v3'; // Changed key to avoid conflicts with old version
 
             function saveProgress() {
                 const formData = new FormData(form);
@@ -597,7 +639,10 @@
                                 }
                             } else if (elements.length && typeof elements.forEach === 'function') { // RadioNodeList
                                  elements.forEach(el => {
-                                    if(el.value === data[key]){
+                                    // Handle array of values for checkboxes
+                                    if(Array.isArray(data[key]) && data[key].includes(el.value)) {
+                                       el.checked = true;
+                                    } else if(el.value === data[key]){
                                         el.checked = true;
                                     }
                                 });
@@ -613,8 +658,8 @@
             function updateProgress() {
                 let answeredCount = 0;
                 progressElements.forEach(el => {
-                    if (el.classList.contains('radio-group')) {
-                        if (el.querySelector('input[type="radio"]:checked')) {
+                    if (el.classList.contains('radio-group') || el.classList.contains('checkbox-group')) {
+                        if (el.querySelector('input:checked')) {
                             answeredCount++;
                         }
                     } else { 
@@ -635,8 +680,8 @@
                     let allInSectionAnswered = true;
                     sectionInputs.forEach(input => {
                         let isInputAnswered = false;
-                        if (input.classList.contains('radio-group')) {
-                            if (input.querySelector('input[type="radio"]:checked')) {
+                        if (input.classList.contains('radio-group') || input.classList.contains('checkbox-group')) {
+                            if (input.querySelector('input:checked')) {
                                 isInputAnswered = true;
                             }
                         } else {
@@ -748,6 +793,4 @@
     </script>
 </body>
 </html>
-
-
 
